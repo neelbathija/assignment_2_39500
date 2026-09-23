@@ -27,7 +27,7 @@ function updateDisplay() {
   const target = Number(targetInput.value);
   if (targetInput.value.trim() === "" || !Number.isSafeInteger(target)) {
     document.getElementById("sum").textContent = "";
-    document.getElementById("result").textContent = "Enter a valid whole-number target.";
+    document.getElementById("result").textContent = "Enter a target.";
     return;
   }
 
@@ -48,7 +48,7 @@ document.getElementById("add-form").addEventListener("submit", function (event) 
   const number = Number(numberInput.value);
 
   if (numberInput.value.trim() === "" || !Number.isSafeInteger(number)) {
-    error.textContent = "Enter a whole number within JavaScript's safe integer range.";
+    error.textContent = "Enter a number";
     return;
   }
 
