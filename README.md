@@ -9,7 +9,7 @@ Open `index.html` in a web browser. No installation or build step is required.
 ## Current progress
 
 - Responsive HTML and CSS starter page.
-- Sample array with zero-based index labels and a worked example.
+- Plain-text sample array and a worked example explaining zero-based indices.
 - JavaScript file ready for the next step.
 
 ## Next steps
