@@ -16,15 +16,47 @@ function twoSum(numbers, target) {
 
 const numbers = [2, 7, 11, 15];
 const target = 9;
-const result = twoSum(numbers, target);
+const numberInput = document.getElementById("number");
+const popButton = document.getElementById("delete");
+const error = document.getElementById("error");
 
-document.getElementById("array").textContent = `[${numbers.join(", ")}]`;
-document.getElementById("target").textContent = `Target: ${target}`;
+function updateDisplay() {
+  const result = twoSum(numbers, target);
 
-if (result !== null) {
-  document.getElementById("sum").textContent =
-    `${numbers[result[0]]} + ${numbers[result[1]]} = ${target}`;
-  document.getElementById("result").textContent = `Result: [${result.join(", ")}]`;
-} else {
-  document.getElementById("result").textContent = "No pair found.";
+  document.getElementById("array").textContent = `[${numbers.join(", ")}]`;
+  document.getElementById("target").textContent = `Target: ${target}`;
+  popButton.disabled = numbers.length === 0;
+
+  if (result !== null) {
+    document.getElementById("sum").textContent =
+      `${numbers[result[0]]} + ${numbers[result[1]]} = ${target}`;
+    document.getElementById("result").textContent = `Result: [${result.join(", ")}]`;
+  } else {
+    document.getElementById("sum").textContent = "";
+    document.getElementById("result").textContent = "No pair found.";
+  }
 }
+
+document.getElementById("add-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const number = Number(numberInput.value);
+
+  if (numberInput.value.trim() === "" || !Number.isSafeInteger(number)) {
+    error.textContent = "Enter a whole number within JavaScript's safe integer range.";
+    return;
+  }
+
+  numbers.push(number);
+  error.textContent = "";
+  numberInput.value = "";
+  numberInput.focus();
+  updateDisplay();
+});
+
+popButton.addEventListener("click", function () {
+  numbers.pop();
+  error.textContent = "";
+  updateDisplay();
+});
+
+updateDisplay();
